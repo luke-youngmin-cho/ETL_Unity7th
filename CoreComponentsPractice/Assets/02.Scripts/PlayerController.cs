@@ -31,13 +31,4 @@ public class PlayerController : MonoBehaviour, IHp
         _hp -= amount;
         onHpDepleted?.Invoke(_hp);
     }
-
-    IEnumerator DoSomething(Action completed)
-    {
-        // ~~ do Something
-        yield return new WaitForEndOfFrame();
-        // ~~ do something2
-        yield return new WaitForSeconds(5);
-        completed.Invoke();
-    }
 }
