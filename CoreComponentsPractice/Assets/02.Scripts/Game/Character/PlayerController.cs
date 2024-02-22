@@ -1,3 +1,4 @@
+using DiceGame.Level;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace DiceGame.Character
         public static PlayerController instance;
 
         public const int DIRECTION_POSITIVE = 1;
-        public const int DIRECTION_NEGATIVE = 1;
+        public const int DIRECTION_NEGATIVE = -1;
 
         // 1 : positive, -1 : negative
         public int direction { get; set; }
@@ -22,6 +23,7 @@ namespace DiceGame.Character
         private float _hp;
         private float _hpMin = 0.0f;
         private float _hpMax = 100.0f;
+        [SerializeField] float _moveSpeed = 1.0f;
         // event 한정자 : 외부 클래스에서는 이 대리자를 쓸 때 +=, -= 의 피연산자로만 사용가능
         public event Action<float> onHpDepleted;
 
@@ -44,7 +46,23 @@ namespace DiceGame.Character
 
         public IEnumerator C_Move(int diceValue)
         {
-            yield return null;
+            for (int i = 0; i < diceValue; i++)
+            {
+                int nextIndex = nodeIndex + direction;
+                if (nextIndex < 0 || nextIndex >= BoardGameMap.nodes.Count)
+                    break;
+
+                float t = 0.0f;
+                while (t < 1.0f)
+                {
+                    transform.position = Vector3.Lerp(BoardGameMap.nodes[nodeIndex].transform.position,
+                                                      BoardGameMap.nodes[nextIndex].transform.position,
+                                                      t);
+                    t += _moveSpeed * Time.deltaTime;
+                    yield return null;
+                }
+                nodeIndex = nextIndex;
+            }
         }
     }
 }

@@ -28,7 +28,7 @@ namespace DiceGame.UI
 
         public IEnumerator C_Animation(int diceValue)
         {
-            float dampingRatio = 0.0f;
+            float dampingRatio = 1.0f;
             float elapsedTime = 0.0f;
 
             while (elapsedTime < _animationDuration)

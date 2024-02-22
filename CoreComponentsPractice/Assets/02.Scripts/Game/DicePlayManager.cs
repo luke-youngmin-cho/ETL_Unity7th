@@ -2,25 +2,13 @@ using DiceGame.UI;
 using DiceGame.Character;
 using System;
 using System.Collections;
-using UnityEngine;
 using DiceGame.Level;
+using DiceGame.Singleton;
 
 namespace DiceGame.Game
 {
-    public class DicePlayManager : MonoBehaviour
+    public class DicePlayManager : SingletonMonoBase<DicePlayManager>
     {
-        public static DicePlayManager instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new GameObject(nameof(DicePlayManager)).AddComponent<DicePlayManager>();
-
-                return _instance;
-            }
-        }
-        private static DicePlayManager _instance;
-
         public int diceNumber
         {
             get => _diceNumber;
@@ -34,7 +22,7 @@ namespace DiceGame.Game
             }
         }
 
-        private int _diceNumber;
+        private int _diceNumber = 3;
         private bool _isCorouting;
         public event Action<int> onDiceNumberChanged;
         public event Action onRollingDiceStarted;
@@ -46,8 +34,9 @@ namespace DiceGame.Game
             if (_isCorouting)
                 return;
 
+            diceNumber--;
             onRollingDiceStarted?.Invoke();
-            int diceValue = UnityEngine.Random.Range(1, 7);
+            int diceValue =  UnityEngine.Random.Range(1, 7);
             _isCorouting = true;
             StartCoroutine(C_RollADice(diceValue));
         }
