@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a3214384442742648aa664ef0039d397
+timeCreated: 1518248476
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/Toon_DoubleShadeWithFeather_Tess_Light.shader
+  uploadId: 465867

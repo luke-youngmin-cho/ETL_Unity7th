@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d1e11a558d143f14c864edf263332764
+timeCreated: 1488638448
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_ShadingGradeMap_AngelRing_TransClipping_StencilOut.shader
+  uploadId: 465867

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d7da29588857e774bb0650f1fae494c6
+timeCreated: 1482812523
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/ToonColor_DoubleShadeWithFeather_Clipping_StencilOut.shader
+  uploadId: 465867

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 183ea557143786346b1bfc862ad22636
+timeCreated: 1518248462
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/Toon_ShadingGradeMap_Tess.shader
+  uploadId: 465867

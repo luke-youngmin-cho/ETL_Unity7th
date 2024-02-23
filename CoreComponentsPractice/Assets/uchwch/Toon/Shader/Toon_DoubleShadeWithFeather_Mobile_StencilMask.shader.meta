@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: dec01cbdbc5b8da4ca8671815cda1557
+timeCreated: 1496949324
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_DoubleShadeWithFeather_Mobile_StencilMask.shader
+  uploadId: 465867

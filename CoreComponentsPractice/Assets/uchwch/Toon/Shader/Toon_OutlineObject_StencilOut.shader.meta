@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2e2edd12fbf6bcb4ea1f34c17ee42df5
+timeCreated: 1482811030
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_OutlineObject_StencilOut.shader
+  uploadId: 465867

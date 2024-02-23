@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 67212ac11ff43b04a833d3986b997a9f
+timeCreated: 1485041964
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_ShadingGradeMap_TransClipping_StencilOut.shader
+  uploadId: 465867

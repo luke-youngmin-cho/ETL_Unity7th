@@ -1,3 +1,5 @@
+using DiceGame.Game;
+using DiceGame.Game.Effects;
 using DiceGame.Level;
 using System;
 using System.Collections;
@@ -19,12 +21,25 @@ namespace DiceGame.Character
         public float hp => _hp;
         public float hpMin => _hpMin;
         public float hpMax => _hpMax;
+        public State state
+        {
+            get => _state;
+            set => _state = value;
+        }
+
+        public IHp target { get; set; }
 
         private float _hp;
         private float _hpMin = 0.0f;
         private float _hpMax = 100.0f;
         [SerializeField] float _moveSpeed = 1.0f;
-        // event ÇÑÁ¤ÀÚ : ¿ÜºÎ Å¬·¡½º¿¡¼­´Â ÀÌ ´ë¸®ÀÚ¸¦ ¾µ ¶§ +=, -= ÀÇ ÇÇ¿¬»êÀÚ·Î¸¸ »ç¿ë°¡´É
+        private float _attackPower = 10.0f;
+        private DamagePopUpFactory _damagePopUpFactory;
+        private Animator _animator;
+        private State _state;
+        private int _stateAnimatorHashID = Animator.StringToHash("State");
+        private int _isDirtyAnimatorHashID = Animator.StringToHash("IsDirty");
+        // event í•œì •ì : ì™¸ë¶€ í´ë˜ìŠ¤ì—ì„œëŠ” ì´ ëŒ€ë¦¬ìë¥¼ ì“¸ ë•Œ +=, -= ì˜ í”¼ì—°ì‚°ìë¡œë§Œ ì‚¬ìš©ê°€ëŠ¥
         public event Action<float> onHpDepleted;
 
 
@@ -33,14 +48,21 @@ namespace DiceGame.Character
             instance = this;
             _hp = _hpMax;
             direction = DIRECTION_POSITIVE;
+            _damagePopUpFactory = new DamagePopUpFactory();
+            _animator = GetComponent<Animator>();
+            var stateMachineBehaviours = _animator.GetBehaviours<StateMachineBehaviourBase>();
+            for (int i = 0; i < stateMachineBehaviours.Length; i++)
+            {
+                stateMachineBehaviours[i].Init(this);
+            }
         }
 
-        public void DepleteHp(float amount)
+        public void DepleteHp(float value)
         {
-            if (_hp <= _hpMin || amount <= 0)
+            if (_hp <= _hpMin || value <= 0)
                 return;
 
-            _hp -= amount;
+            _hp -= value;
             onHpDepleted?.Invoke(_hp);
         }
 
@@ -52,17 +74,59 @@ namespace DiceGame.Character
                 if (nextIndex < 0 || nextIndex >= BoardGameMap.nodes.Count)
                     break;
 
-                float t = 0.0f;
-                while (t < 1.0f)
+                // ì¥ì• ë¬¼ í™•ì¸
+                if (BoardGameMap.nodes[nextIndex].obstacle)
                 {
-                    transform.position = Vector3.Lerp(BoardGameMap.nodes[nodeIndex].transform.position,
-                                                      BoardGameMap.nodes[nextIndex].transform.position,
-                                                      t);
-                    t += _moveSpeed * Time.deltaTime;
-                    yield return null;
+                    yield return StartCoroutine(BoardGameMap.nodes[nextIndex].obstacle.C_Interaction(this)); // ì¥ì• ë¬¼ê³¼ ìƒí˜¸ì‘ìš© ë£¨í‹´ ì‹œì‘
                 }
-                nodeIndex = nextIndex;
+                else
+                {
+                    float t = 0.0f;
+                    while (t < 1.0f)
+                    {
+                        transform.position = Vector3.Lerp(BoardGameMap.nodes[nodeIndex].transform.position,
+                                                          BoardGameMap.nodes[nextIndex].transform.position,
+                                                          t);
+                        t += _moveSpeed * Time.deltaTime;
+                        yield return null;
+                    }
+                    nodeIndex = nextIndex;
+                }
             }
+        }
+
+        public void ChangeState(State newState)
+        {
+            _animator.SetInteger(_stateAnimatorHashID, (int)newState);
+            _animator.SetBool(_isDirtyAnimatorHashID, true);
+        }
+
+        private void Hit(AnimationEvent e)
+        {
+            if (target != null)
+            {
+                target.DepleteHp(_attackPower);
+                _damagePopUpFactory.Create(transform.position + Vector3.forward * 1.0f + Vector3.up * 1.2f,
+                                           Quaternion.identity,
+                                           _attackPower,
+                                           DamageType.Normal);
+            }
+        }
+
+        [SerializeField] AudioSource _footStepAudioSource;
+        private void FootL()
+        {
+            if (_footStepAudioSource.isPlaying)
+                return;
+
+            _footStepAudioSource.Play();
+        }
+        private void FootR()
+        {
+            if (_footStepAudioSource.isPlaying)
+                return;
+
+            _footStepAudioSource.Play();
         }
     }
 }

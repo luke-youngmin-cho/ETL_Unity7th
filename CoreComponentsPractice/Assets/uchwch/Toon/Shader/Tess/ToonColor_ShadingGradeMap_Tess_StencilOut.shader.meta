@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 9cf7e8eb46e9128438d50adf7a841de6
+timeCreated: 1518248476
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/ToonColor_ShadingGradeMap_Tess_StencilOut.shader
+  uploadId: 465867

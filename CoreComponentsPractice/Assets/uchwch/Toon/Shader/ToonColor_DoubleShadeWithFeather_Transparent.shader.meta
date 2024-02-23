@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 97b7edb5fc0f5744c9b264c2224a0b1e
+timeCreated: 1495243657
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/ToonColor_DoubleShadeWithFeather_Transparent.shader
+  uploadId: 465867

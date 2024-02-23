@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 88791c14394118d42a5e176b433af322
+timeCreated: 1534682118
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_DoubleShadeWithFeather_Mobile_Clipping.shader
+  uploadId: 465867

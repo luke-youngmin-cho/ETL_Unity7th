@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: aebd33b74ef849a4882b4a8d55f0f0c9
+timeCreated: 1485041964
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_ShadingGradeMap_TransClipping.shader
+  uploadId: 465867

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3a1af221400a61a4b94bae19aa79da2b
+timeCreated: 1518248467
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/Toon_ShadingGradeMap_AngelRing_Tess.shader
+  uploadId: 465867

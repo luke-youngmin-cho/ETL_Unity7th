@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cfc201757f2519c4bb6ef9265a046582
+timeCreated: 1496949324
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_ShadingGradeMap_Mobile_StencilOut.shader
+  uploadId: 465867

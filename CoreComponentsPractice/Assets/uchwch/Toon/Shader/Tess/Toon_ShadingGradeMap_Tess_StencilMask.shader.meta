@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0d799eb857c0e2c45bbdfb2c033d33e6
+timeCreated: 1518248461
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/Toon_ShadingGradeMap_Tess_StencilMask.shader
+  uploadId: 465867

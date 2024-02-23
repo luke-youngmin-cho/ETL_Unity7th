@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 41f4ee183cb66ad40bc74a9f8f944974
+timeCreated: 1534682118
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_DoubleShadeWithFeather_Mobile_Clipping_StencilMask.shader
+  uploadId: 465867

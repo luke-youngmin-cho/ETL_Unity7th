@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 08c6bb334aed21c4198cf46b71ebca2d
+timeCreated: 1518248460
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/Toon_ShadingGradeMap_TransClipping_Tess_StencilOut.shader
+  uploadId: 465867

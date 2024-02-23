@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4a20b66d106d3f5409f759b5193ecdc2
+timeCreated: 1518248469
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/ToonColor_DoubleShadeWithFeather_TransClipping_Tess_StencilMask.shader
+  uploadId: 465867

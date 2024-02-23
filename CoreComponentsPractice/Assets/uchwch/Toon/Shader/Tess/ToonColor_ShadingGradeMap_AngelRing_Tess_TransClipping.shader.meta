@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d3fb22770ec830b43bdb5ccb973e6f76
+timeCreated: 1518248479
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/ToonColor_ShadingGradeMap_AngelRing_Tess_TransClipping.shader
+  uploadId: 465867

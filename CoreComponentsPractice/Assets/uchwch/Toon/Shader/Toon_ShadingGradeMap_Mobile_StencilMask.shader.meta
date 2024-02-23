@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 206c554c8b0c60041a9d242385f543d3
+timeCreated: 1496949323
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Toon_ShadingGradeMap_Mobile_StencilMask.shader
+  uploadId: 465867

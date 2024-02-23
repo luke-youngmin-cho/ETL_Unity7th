@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3c39a77fda28b5043a7a17c7877cf7b2
+timeCreated: 1518248467
+licenseType: Store
+ShaderImporter:
+  defaultTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 204862
+  packageName: SD chan Animation bundle
+  packageVersion: 1.0
+  assetPath: Assets/uchwch/Toon/Shader/Tess/ToonColor_ShadingGradeMap_TransClipping_Tess.shader
+  uploadId: 465867

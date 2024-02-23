@@ -1,4 +1,4 @@
-﻿using DiceGame.Character;
+using DiceGame.Character;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,13 +9,22 @@ namespace DiceGame.Level
     public abstract class Node : MonoBehaviour, INode, IComparable<Node>
     {
         public int nodeIndex => _nodeIndex;
+        public Obstacle obstacle
+        {
+            get => _obstacle;
+            set => _obstacle = value;
+        }
 
         [SerializeField] private int _nodeIndex;
+        [SerializeField] private Obstacle _obstacle;
 
 
         private void Awake()
         {
             BoardGameMap.Register(this);
+            
+            if (_obstacle)
+                _obstacle.node = this;
         }
 
         public virtual void OnPlayerHere()
