@@ -1,7 +1,6 @@
 using DiceGame.Character;
+using DiceGame.Level.Items;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DiceGame.Level
@@ -9,6 +8,8 @@ namespace DiceGame.Level
     public abstract class Node : MonoBehaviour, INode, IComparable<Node>
     {
         public int nodeIndex => _nodeIndex;
+
+        [field: SerializeField] public Item item { get; private set; }
         public Obstacle obstacle
         {
             get => _obstacle;
@@ -17,7 +18,7 @@ namespace DiceGame.Level
 
         [SerializeField] private int _nodeIndex;
         [SerializeField] private Obstacle _obstacle;
-
+        
 
         private void Awake()
         {
@@ -30,6 +31,8 @@ namespace DiceGame.Level
         public virtual void OnPlayerHere()
         {
             PlayerController.instance.direction = PlayerController.DIRECTION_POSITIVE;
+            item?.Use(PlayerController.instance);
+            item = null;
         }
 
         public virtual void OnDiceRolled(int diceValue)

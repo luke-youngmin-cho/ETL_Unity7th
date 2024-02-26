@@ -370,17 +370,17 @@ ModelImporter:
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
-      improve retargeting quality.\n\t'B_Spine' has translation animation that will
-      be discarded.\n"
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'B_Spine' has translation animation that
+      will be discarded.\n"
     animationRetargetingWarnings: "\nRetargeting quality report for clip 'Take 001':\n\tLeftLowerLeg
       average position error 3.5 mm and maximum position error 7.1 mm at time 0:27
       (58.7%) Frame 27\n\tRightLowerLeg average position error 1.5 mm and maximum
       position error 12.8 mm at time 0:11 (23.9%) Frame 11\n\tLeftUpperArm average
       position error 0.7 mm and maximum position error 20.4 mm at time 0: 0 (0.0%)
-      Frame 0\n\tLeftLowerArm average position error 0.7 mm and maximum position error
-      20.4 mm at time 0: 0 (0.0%) Frame 0\n\tLeftHand average position error 0.7 mm
-      and maximum position error 20.4 mm at time 0: 0 (0.0%) Frame 0\n\tRightUpperArm
+      Frame 0\n\tLeftLowerArm average position error 0.7 mm and maximum position
+      error 20.4 mm at time 0: 0 (0.0%) Frame 0\n\tLeftHand average position error
+      0.7 mm and maximum position error 20.4 mm at time 0: 0 (0.0%) Frame 0\n\tRightUpperArm
       average position error 0.7 mm and maximum position error 20.4 mm at time 0:
       0 (0.0%) Frame 0\n\tRightLowerArm average position error 0.8 mm and maximum
       position error 20.5 mm at time 0: 0 (0.0%) Frame 0\n\tRightHand average position
@@ -1193,3 +1193,10 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 65284
+  packageName: RPG Character Mecanim Animation Pack FREE
+  packageVersion: 2.5.2
+  assetPath: Assets/ExplosiveLLC/RPG Character Mecanim Animation Pack FREE/Animations/2Hand-Sword/RPG-Character@2Hand-Sword-Knockdown1.FBX
+  uploadId: 586175

@@ -39,6 +39,10 @@ namespace DiceGame.Character
         private State _state;
         private int _stateAnimatorHashID = Animator.StringToHash("State");
         private int _isDirtyAnimatorHashID = Animator.StringToHash("IsDirty");
+        private int _speedAnimatorHashID = Animator.StringToHash("Speed");
+        private int _weaponAnimatorHashID = Animator.StringToHash("Weapon");
+        private IWeaponStrategy _weaponStrategy;
+        [SerializeField] Transform _rightHand;
         // event 한정자 : 외부 클래스에서는 이 대리자를 쓸 때 +=, -= 의 피연산자로만 사용가능
         public event Action<float> onHpDepleted;
 
@@ -54,6 +58,19 @@ namespace DiceGame.Character
             for (int i = 0; i < stateMachineBehaviours.Length; i++)
             {
                 stateMachineBehaviours[i].Init(this);
+            }
+        }
+
+        private void Start()
+        {
+            if (_rightHand.childCount > 0)
+            {
+                _weaponStrategy = _rightHand.GetChild(0).GetComponent<IWeaponStrategy>();
+                Transform weaponTransform = _rightHand.GetChild(0);
+                weaponTransform.SetParent(_rightHand);
+                weaponTransform.localPosition = Vector3.zero;
+                weaponTransform.localRotation = Quaternion.identity;
+                _animator.SetInteger(_weaponAnimatorHashID, (int)_weaponStrategy.type);
             }
         }
 
@@ -81,6 +98,7 @@ namespace DiceGame.Character
                 }
                 else
                 {
+                    _animator.SetFloat(_speedAnimatorHashID, 1.0f);
                     float t = 0.0f;
                     while (t < 1.0f)
                     {
@@ -91,6 +109,7 @@ namespace DiceGame.Character
                         yield return null;
                     }
                     nodeIndex = nextIndex;
+                    _animator.SetFloat(_speedAnimatorHashID, 0.0f);
                 }
             }
         }
@@ -101,14 +120,26 @@ namespace DiceGame.Character
             _animator.SetBool(_isDirtyAnimatorHashID, true);
         }
 
+        public void SetWeaponStrategy(IWeaponStrategy weaponStrategy, Transform weaponTransform)
+        {
+            if (_rightHand.childCount > 0)
+                Destroy(_rightHand.GetChild(0).gameObject);
+
+            weaponTransform.SetParent(_rightHand);
+            weaponTransform.localPosition = Vector3.zero;
+            weaponTransform.localRotation = Quaternion.identity;
+            _animator.SetInteger(_weaponAnimatorHashID, (int)weaponStrategy.type);
+            _weaponStrategy = weaponStrategy;
+        }
+
         private void Hit(AnimationEvent e)
         {
             if (target != null)
             {
-                target.DepleteHp(_attackPower);
+                _weaponStrategy.Attack(target, _attackPower, out float amountDamaged);
                 _damagePopUpFactory.Create(transform.position + Vector3.forward * 1.0f + Vector3.up * 1.2f,
                                            Quaternion.identity,
-                                           _attackPower,
+                                           amountDamaged,
                                            DamageType.Normal);
             }
         }
