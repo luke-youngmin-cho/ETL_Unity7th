@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 
@@ -22,7 +23,13 @@ namespace DiceGame.UI
         /// 이 UI 와 유저가 상호작용 할 때 실행할 내용
         /// </summary>
         void InputAction();
-        
+
+        /// <summary>
+        /// 현재 Canvas에 GraphicsRaycaster 모듈로 RaycastTarget 을 감지함
+        /// </summary>
+        /// <param name="results"> 감지된 결과를 캐싱해 둘 리스트 </param>
+        void Raycast(List<RaycastResult> results);
+
         /// <summary>
         /// 이 UI 를 보여줌
         /// </summary>
@@ -33,10 +40,7 @@ namespace DiceGame.UI
         /// </summary>
         void Hide();
 
-        /// <summary>
-        /// 현재 Canvas에 GraphicsRaycaster 모듈로 RaycastTarget 을 감지함
-        /// </summary>
-        /// <param name="results"> 감지된 결과를 캐싱해 둘 리스트 </param>
-        void Raycast(List<RaycastResult> results);
+        event Action onShow;
+        event Action onHide;
     }
 }

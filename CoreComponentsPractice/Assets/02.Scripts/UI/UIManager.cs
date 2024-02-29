@@ -6,13 +6,22 @@ using UnityEngine.EventSystems;
 
 namespace DiceGame.UI
 {
-    public class UIManager : SingletonBase<UIManager>
+    public class UIManager : SingletonMonoBase<UIManager>
     {
         private Dictionary<Type, IUI> _uis = new Dictionary<Type, IUI>();
         private List<IUIScreen> _screens = new List<IUIScreen>();
         private LinkedList<IUIPopUp> _popUps = new LinkedList<IUIPopUp>();
         private List<RaycastResult> _raycastResult = new List<RaycastResult>();
 
+
+        private void Update()
+        {
+            if (_popUps.Count > 0)
+            {
+                if (_popUps.Last.Value.inputActionEnable)
+                    _popUps.Last.Value.InputAction();
+            }
+        }
 
         /// <summary>
         /// UI 최초 등록
@@ -71,8 +80,7 @@ namespace DiceGame.UI
             _popUps.Remove(ui); // 새 PopUp 이 기존에 존재하던 PopUp이면 제거
             _popUps.AddLast(ui); // 새 PopUp 을 가장 뒤에 추가
 
-            if (_popUps.Count > 50)
-                RearrangePopUpSortingOrders();
+            RearrangePopUpSortingOrders();
 
             if (_popUps.Count == 1)
             {
