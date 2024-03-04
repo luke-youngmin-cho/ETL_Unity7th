@@ -19,5 +19,16 @@ namespace DiceGame.Singleton
         }
 
         private static T _instance;
+
+        protected virtual void Awake()
+        {
+            if (_instance != null)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            _instance = (T)this;
+        }
     }
 }

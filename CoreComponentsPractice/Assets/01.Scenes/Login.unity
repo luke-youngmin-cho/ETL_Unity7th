@@ -1765,7 +1765,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: {fileID: 469916153}
   _pw: {fileID: 694004593}
-  _login: {fileID: 1507323636}
+  _tryLogin: {fileID: 1507323636}
 --- !u!1 &1218090430
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,7 +2248,7 @@ GameObject:
   - component: {fileID: 1507323636}
   - component: {fileID: 1507323635}
   m_Layer: 5
-  m_Name: Button - Login
+  m_Name: Button - TryLogin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
