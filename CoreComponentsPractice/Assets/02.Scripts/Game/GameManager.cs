@@ -1,4 +1,5 @@
 using DiceGame.Data;
+using DiceGame.Data.Mock;
 using DiceGame.Singleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,9 @@ namespace DiceGame.Game
 
     public class GameManager : SingletonMonoBase<GameManager>
     {
+        [field: SerializeField] public bool isTesting { get; private set; }
+        public IUnitOfWork unitOfWork { get; private set; }
+
         public GameState state
         {
             get => _state;
@@ -30,7 +34,6 @@ namespace DiceGame.Game
             }
         }
         [SerializeField] GameState _state;
-
 
         override protected void Awake()
         {
@@ -62,8 +65,20 @@ namespace DiceGame.Game
                     }
                     break;
                 case GameState.LoadResources:
+                    {
+                        if (isTesting)
+                            unitOfWork = new MockUnitOfWork();
+                        else
+                            unitOfWork = new UnitOfWork();
+
+                        _state++;
+                    }
                     break;
                 case GameState.WaitUntilResourcesLoaded:
+                    {
+                        SceneManager.LoadScene("DicePlay");
+                        _state++;
+                    }
                     break;
                 case GameState.InGame:
                     break;

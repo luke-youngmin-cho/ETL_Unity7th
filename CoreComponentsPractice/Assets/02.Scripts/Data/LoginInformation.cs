@@ -7,7 +7,7 @@ namespace DiceGame.Data
 {
     public static class LoginInformation
     {
-        public static bool loggedIn => profile.IsValid;
+        public static bool loggedIn => profile == null ? false : profile.IsValid;
         public static ProfileDataModel profile { get; private set; }
         public static bool isTesting = true;
 

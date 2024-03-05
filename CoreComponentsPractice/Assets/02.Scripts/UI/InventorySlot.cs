@@ -7,6 +7,7 @@ namespace DiceGame.UI
     public class InventorySlot : MonoBehaviour
     {
         public int slotID { get; set; }
+        public Sprite sprite => _icon.sprite;
         [SerializeField] Image _icon;
         [SerializeField] TMP_Text _num;
 
