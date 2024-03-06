@@ -1,4 +1,4 @@
-using DiceGame.Character;
+using DiceGame.Game.Character;
 using DiceGame.Game;
 using UnityEngine;
 

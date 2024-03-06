@@ -1,9 +1,11 @@
 using DiceGame.UI;
-using DiceGame.Character;
+using DiceGame.Game.Character;
 using System;
 using System.Collections;
 using DiceGame.Level;
 using DiceGame.Singleton;
+using UnityEngine;
+using NUnit.Framework;
 
 namespace DiceGame.Game
 {
@@ -49,6 +51,83 @@ namespace DiceGame.Game
             BoardGameMap.nodes[PlayerController.instance.nodeIndex].OnPlayerHere();
             onRollingDiceFinished?.Invoke();
             _isCorouting = false;
+        }
+
+        public void EnumConcept()
+        {
+            MyCollection myCollection = new MyCollection(new ArrayList() { 1, "철수", 5.0f });
+
+            IEnumerator e = myCollection.GetEnumerator();
+            while (e.MoveNext())
+            {
+                Console.WriteLine(e.Current);
+            }
+            e.Reset();
+
+            foreach (var item in myCollection)
+            {
+                Console.WriteLine(item);
+            }
+
+            foreach (var item in C_Something())
+            {
+
+            }
+        }
+
+        public class MyCollection : IEnumerable
+        {
+            public MyCollection(ArrayList data)
+            {
+                _data = data;
+            }
+
+            private ArrayList _data;
+
+            public IEnumerator GetEnumerator()
+            {
+                return new Enumerator(this);
+            }
+
+            public struct Enumerator : IEnumerator
+            {
+                public Enumerator(MyCollection list)
+                {
+                    _current = null;
+                    _items = list._data;
+                    _index = 0;
+                }
+
+                public object Current => _current;
+                private object _current;
+                private readonly ArrayList _items;
+                private int _index;
+
+                public bool MoveNext()
+                {
+                    if (_index < _items.Count)
+                    {
+                        _current = _items[_index++];
+                        return true;
+                    }
+
+                    return false;
+                }
+
+                public void Reset()
+                {
+                    _index = 0;
+                    _current = default;
+                }
+            }
+        }
+        
+
+        IEnumerable C_Something()
+        {
+            yield return 1;
+            yield return "철수";
+            yield return 5.0f;
         }
     }
 }

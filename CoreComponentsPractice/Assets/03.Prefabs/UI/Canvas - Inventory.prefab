@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Content: {fileID: 1719846864434822683}
   m_Horizontal: 1
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
@@ -585,7 +585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.00007203221, y: -0.000067813125}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 1023.3205}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1074631733264768081
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4810549410267169351}
   m_HandleRect: {fileID: 559555992820903506}
   m_Direction: 2
-  m_Value: 1.0000001
+  m_Value: 1
   m_Size: 0.657663
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1415,6 +1415,8 @@ MonoBehaviour:
   _slotPrefab: {fileID: 8969340571551409904, guid: 8c1800f0e6bf9b54bbea98ff8849724b,
     type: 3}
   _slotContent: {fileID: 1719846864434822683}
+  _itemControllerPrefab: {fileID: 7196505454171889470, guid: 9bf5da25bcb39fb44b4126cd9172a5b9,
+    type: 3}
   _selectedFollowingItemIcon: {fileID: 3584284453363793505}
 --- !u!1 &8190920968765740474
 GameObject:

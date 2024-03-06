@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using DiceGame.Character;
+using DiceGame.Game.Character;
 
 public class HpBarUI : MonoBehaviour
 {

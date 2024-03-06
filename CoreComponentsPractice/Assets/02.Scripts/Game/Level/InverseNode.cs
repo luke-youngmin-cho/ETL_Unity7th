@@ -1,4 +1,4 @@
-﻿using DiceGame.Character;
+using DiceGame.Game.Character;
 
 namespace DiceGame.Level
 {

@@ -1,11 +1,13 @@
 using DiceGame.Data;
 using DiceGame.Game;
+using DiceGame.Game.Character;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
+using DiceGame.Game.Interactables;
 
 namespace DiceGame.UI
 {
@@ -17,11 +19,13 @@ namespace DiceGame.UI
         [SerializeField] InventorySlot _slotPrefab; // 슬롯 데이터를 보여줄 기본 단위 원본
         [SerializeField] Transform _slotContent; // 슬롯 생성 위치
         private List<InventorySlot> _slots; // 생성된 슬롯들
+        [SerializeField] ItemController _itemControllerPrefab; // 슬롯의 아이템을 버릴때 월드에 생성할 컨트롤러
         private IRepository<InventorySlotDataModel> _repository; // 슬롯 데이터를 가지고있는 저장소
         private int _selectedSlotID = NOT_SELECTED;
         private const int NOT_SELECTED = -1;
         [SerializeField] Image _selectedFollowingItemIcon;
         private List<RaycastResult> _results = new List<RaycastResult>();
+
 
         protected override void Awake()
         {
@@ -104,6 +108,33 @@ namespace DiceGame.UI
                             }
                         }
                     }
+                    // 다른 UI 에 상호작용 할만한 것이 있다..!
+                    else if (UIManager.instance.TryCastOther(this, out IUI other, out GameObject hovered))
+                    {
+
+                    }
+                    // 상호작용할만한 UI 가 감지되지 않았다 (그냥 World 에 누름)
+                    else
+                    {
+                        // 대리자를 전달할 때(CallBack 등) 람다식내에서 지역변수가 아닌 멤버변수를 사용하면,  
+                        // 해당 대리자가 호출되기 전까지 멤버변수의 값이 수정되었을때 람다식은 해당 멤버변수위치를 참조하므로 
+                        // 의도하지 않은 동작을 할 수 있으므로, 값이 변할 여지가 있는 변수를 참조해야할 경우, 지역변수를 참조하도록 작성한다.
+                        int tmpSlotID = _selectedSlotID;
+                        UIManager.instance.Get<UIConfirmWindow>()
+                                          .Show(message: "Sure to throw away ?",
+                                                onConfirm: () =>
+                                                {
+                                                    InventorySlotDataModel slotData = _repository.GetItemByID(tmpSlotID);
+                                                    _repository.UpdateItem(tmpSlotID, new InventorySlotDataModel(0, 0));
+
+                                                    Instantiate(_itemControllerPrefab,
+                                                                PlayerController.instance.transform.position,
+                                                                Quaternion.identity)
+                                                        .SetUp(slotData);
+                                                });
+                        
+                        Deselect();
+                    }
                 }
             }
             else if (Input.GetMouseButtonDown(1))
@@ -115,7 +146,6 @@ namespace DiceGame.UI
             // 현재 선택된 슬롯이 있다면, 아이콘이 마우스포인터 따라다니게 함.
             if (_selectedSlotID != NOT_SELECTED)
                 _selectedFollowingItemIcon.transform.position = Input.mousePosition;
-
         }
 
         private void Select(int slotID)

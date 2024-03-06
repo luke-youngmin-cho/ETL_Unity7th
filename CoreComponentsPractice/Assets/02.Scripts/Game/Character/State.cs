@@ -1,4 +1,4 @@
-namespace DiceGame.Character
+namespace DiceGame.Game.Character
 {
     public enum State
     {

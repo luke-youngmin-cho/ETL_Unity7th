@@ -1,8 +1,4 @@
-using DiceGame.Game;
-using DiceGame.Game.Effects;
-using UnityEngine.Rendering;
-
-namespace DiceGame.Character
+namespace DiceGame.Game.Character
 {
     public interface IWeaponStrategy
     {

@@ -1,5 +1,6 @@
 using DiceGame.Game;
 using DiceGame.Game.Effects;
+using DiceGame.Game.Interactables;
 using DiceGame.Level;
 using DiceGame.UI;
 using System;
@@ -7,7 +8,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace DiceGame.Character
+namespace DiceGame.Game.Character
 {
     public class PlayerController : MonoBehaviour, IHp
     {
@@ -44,6 +45,7 @@ namespace DiceGame.Character
         private int _weaponAnimatorHashID = Animator.StringToHash("Weapon");
         private IWeaponStrategy _weaponStrategy;
         [SerializeField] Transform _rightHand;
+        [SerializeField] LayerMask _interactableMask;
         // event 한정자 : 외부 클래스에서는 이 대리자를 쓸 때 +=, -= 의 피연산자로만 사용가능
         public event Action<float> onHpDepleted;
 
@@ -84,6 +86,15 @@ namespace DiceGame.Character
             else if (Input.GetKeyDown(KeyCode.E))
             {
                 UIManager.instance.Get<UIEquipped>().Toggle();
+            }
+            else if (Input.GetKeyDown(KeyCode.F))
+            {
+                Collider[] cols = Physics.OverlapSphere(transform.position, 0.5f, _interactableMask);
+
+                if (cols.Length > 0)
+                {
+                    cols[0].GetComponent<IInteractable>().Interaction();
+                }
             }
         }
 
