@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://etl7-unity-luke-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+  <string name="gcm_defaultSenderId" translatable="false">312790652458</string>
+  <string name="google_storage_bucket" translatable="false">etl7-unity-luke.appspot.com</string>
+  <string name="project_id" translatable="false">etl7-unity-luke</string>
+  <string name="google_api_key" translatable="false">AIzaSyAkAKC0ONiJ7WzcJIyxUdZZp9Ppj8hX9Hw</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAkAKC0ONiJ7WzcJIyxUdZZp9Ppj8hX9Hw</string>
+  <string name="google_app_id" translatable="false">1:312790652458:android:4fa6de9424ae6c0c229553</string>
+  <string name="default_web_client_id" translatable="false">312790652458-srt7jqr2nsis0l8ln21fps1glq78n8v6.apps.googleusercontent.com</string>
+</resources>

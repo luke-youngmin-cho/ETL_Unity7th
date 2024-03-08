@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "312790652458",
+    "firebase_url": "https://etl7-unity-luke-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "etl7-unity-luke",
+    "storage_bucket": "etl7-unity-luke.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:312790652458:android:4fa6de9424ae6c0c229553",
+        "android_client_info": {
+          "package_name": "com.etl7th.corecomponentspractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "312790652458-srt7jqr2nsis0l8ln21fps1glq78n8v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkAKC0ONiJ7WzcJIyxUdZZp9Ppj8hX9Hw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "312790652458-srt7jqr2nsis0l8ln21fps1glq78n8v6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "312790652458-v1030lbo11fkijr0hpbim8k0s3pohks9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.etl7th.corecomponentspractice"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

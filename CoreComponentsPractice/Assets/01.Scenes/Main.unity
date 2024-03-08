@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27066575b4a45f74283fdff2536a7dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <isTesting>k__BackingField: 1
+  <isTesting>k__BackingField: 0
   _state: 1
 --- !u!4 &1858976811
 Transform:

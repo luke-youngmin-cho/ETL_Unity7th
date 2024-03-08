@@ -4,8 +4,21 @@ namespace MultiThreading_AsyncAwait
 {
     internal class Program
     {
+        public static int BeverageCount;
+        public static object countLock = new object();
+
         static void Main(string[] args)
         {
+            List<Task<string>> tasks = new List<Task<string>>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                tasks.Add(MakeBaristaToWork());
+            }
+            Task.WaitAll(tasks.ToArray());
+            Console.WriteLine(BeverageCount);
+            return;
+
             Task<string> task = MakeBaristaToWork();
             task.Wait();
 
@@ -19,10 +32,13 @@ namespace MultiThreading_AsyncAwait
             }
 
             Task.WaitAll(baristaTasks.ToArray());
-            for (int i = 0; i < baristaTasks.Count; i++)
-            {
-                Console.WriteLine(baristaTasks[i].Result);
-            }
+
+            Console.WriteLine(BeverageCount);
+
+            //for (int i = 0; i < baristaTasks.Count; i++)
+            //{
+            //    Console.WriteLine(baristaTasks[i].Result);
+            //}
         }
 
         static async Task<string> MakeBaristaToWork()
@@ -31,6 +47,13 @@ namespace MultiThreading_AsyncAwait
                                         .GoToCafe("Luke's Coffee")
                                         .MakeCoffee();
 
+            lock (countLock)
+            {
+                for (int i = 0; i < 100000; i++)
+                {
+                    BeverageCount++;
+                }
+            }
             return result.ToString();
         }
 

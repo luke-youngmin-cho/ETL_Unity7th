@@ -63,6 +63,16 @@ namespace MultiThreading
             taskWithResult.Start();
             taskWithResult.Wait();
             Console.WriteLine(taskWithResult.Result);
+
+            List<int> list = new List<int>();
+            using (IEnumerator<int> e = list.GetEnumerator())
+            {
+                while (e.MoveNext())
+                {
+                    Console.WriteLine(e.Current);
+                }
+                e.Reset();
+            }
         }
 
         static Barista HireBarista(string nickname)

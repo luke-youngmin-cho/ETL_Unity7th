@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>312790652458-v1030lbo11fkijr0hpbim8k0s3pohks9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.312790652458-v1030lbo11fkijr0hpbim8k0s3pohks9</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDK9WD9nftM1dr5X49wqfXvrKILIvon7eo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>312790652458</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.etl7th.corecomponentspractice</string>
+	<key>PROJECT_ID</key>
+	<string>etl7-unity-luke</string>
+	<key>STORAGE_BUCKET</key>
+	<string>etl7-unity-luke.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:312790652458:ios:ce03076f844601b8229553</string>
+	<key>DATABASE_URL</key>
+	<string>https://etl7-unity-luke-default-rtdb.asia-southeast1.firebasedatabase.app</string>
+</dict>
+</plist>
