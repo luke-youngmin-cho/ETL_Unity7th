@@ -1,5 +1,6 @@
 using DiceGame.Data;
 using DiceGame.Data.Mock;
+using DiceGame.Network;
 using DiceGame.Singleton;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -61,7 +62,10 @@ namespace DiceGame.Game
                 case GameState.WaitUntilLoggedIn:
                     {
                         if (LoginInformation.loggedIn)
-                            _state++;
+                        {
+                            if (PhotonManager.instance)
+                                _state++;
+                        }
                     }
                     break;
                 case GameState.LoadResources:
@@ -76,8 +80,11 @@ namespace DiceGame.Game
                     break;
                 case GameState.WaitUntilResourcesLoaded:
                     {
-                        SceneManager.LoadScene("DicePlay");
-                        _state++;
+                        if (unitOfWork.isReady)
+                        {
+                            SceneManager.LoadScene("DicePlay");
+                            _state++;
+                        }
                     }
                     break;
                 case GameState.InGame:

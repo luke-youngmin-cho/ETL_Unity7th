@@ -6,6 +6,8 @@ using Firebase;
 using System;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
+using Firebase.Extensions;
 
 namespace DiceGame.Data
 {
@@ -18,20 +20,13 @@ namespace DiceGame.Data
 
 
         public bool hasInitialized { get; private set; }
-        public List<InventorySlotDataModel> inventorySlotDataModels { get; private set; }
+        public List<InventorySlotDataModel> inventorySlotDataModels { get; private set; } // dependency source
         private FirebaseDatabase _realtimeDB = FirebaseDatabase.DefaultInstance;
 
-        public event Action onFirebaseInitialized;
         public event Action<int, InventorySlotDataModel> onInventorySlotDataChanged;
 
         public async void Load()
         {
-            var dependencyState = await FirebaseApp.CheckAndFixDependenciesAsync();
-            if (dependencyState == DependencyStatus.Available)
-            {
-                onFirebaseInitialized?.Invoke();
-            }
-
             DatabaseReference inventorySlotsRef =
                 _realtimeDB.GetReference($"users/{LoginInformation.profile.id}/inventorySlots");
 
@@ -63,15 +58,18 @@ namespace DiceGame.Data
         /// </summary>
         /// <param name="slotID"> 저장할 DependencySource의 인덱스 </param>
         /// <param name="onCompleted"> 저장 완료후 실행할 행동 </param>
-        public void SaveInventorySlotDataModel(int slotID, Action onCompleted)
+        public void SaveInventorySlotDataModel(int slotID, InventorySlotDataModel newData, Action<InventorySlotDataModel> onCompleted)
         {
-            string json = JsonConvert.SerializeObject(inventorySlotDataModels[slotID]); // 저장할 객체를 json 으로 직렬화
+            string json = JsonConvert.SerializeObject(newData); // 저장할 객체를 json 으로 직렬화
             _realtimeDB.GetReference($"users/{LoginInformation.profile.id}/inventorySlots/{slotID}") // 저장할 위치 참조 
                        .SetRawJsonValueAsync(json) // 해당 위치에 저장
-                       .ContinueWith(task => 
+                       .ContinueWithOnMainThread(task => 
                        {
                            if (task.IsCompleted)
-                               onCompleted?.Invoke();
+                           {
+                               inventorySlotDataModels[slotID] = newData;
+                               onCompleted?.Invoke(newData);
+                           }
                        }); // 저장 끝나고나서 추가 내용 수행
         }
 
@@ -84,7 +82,7 @@ namespace DiceGame.Data
         {
             _realtimeDB.GetReference($"users/{LoginInformation.profile.id}/inventorySlots/{slotID}") // 읽을 위치 참조 
                        .GetValueAsync() // 해당 위치에서 읽기
-                       .ContinueWith(task =>
+                       .ContinueWithOnMainThread(task =>
                        {
                            DataSnapshot snapshot = task.Result;
 

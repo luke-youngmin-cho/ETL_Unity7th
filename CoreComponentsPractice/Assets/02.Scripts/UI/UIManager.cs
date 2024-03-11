@@ -84,8 +84,8 @@ namespace DiceGame.UI
 
             if (_popUps.Count == 1)
             {
-                Cursor.visible = true;
-                Cursor.lockState = CursorLockMode.Confined;
+                //Cursor.visible = true;
+                //Cursor.lockState = CursorLockMode.Confined;
             }
         }
 
@@ -103,8 +103,8 @@ namespace DiceGame.UI
 
             if (_popUps.Count == 0)
             {
-                Cursor.visible = false;
-                Cursor.lockState = CursorLockMode.Locked;
+                //Cursor.visible = false;
+                //Cursor.lockState = CursorLockMode.Locked;
             }
         }
 

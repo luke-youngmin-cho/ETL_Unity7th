@@ -10,6 +10,9 @@ namespace DiceGame.Data.Mock
             inventoryRepository = new MockInventoryRepository();
         }
 
+
+        public bool isReady => true;
+
         public IRepository<InventorySlotDataModel> inventoryRepository { get; private set; }
     }
 }
