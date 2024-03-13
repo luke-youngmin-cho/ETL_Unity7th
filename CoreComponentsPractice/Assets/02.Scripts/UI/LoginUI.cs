@@ -1,8 +1,12 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using DiceGame.Data;
+using Firebase.Auth;
+using DiceGame.Data.Firebase;
+using Firebase;
+using System;
+using Firebase.Extensions;
 
 namespace DiceGame.UI
 {
@@ -11,9 +15,17 @@ namespace DiceGame.UI
         [SerializeField] TMP_InputField _id;
         [SerializeField] TMP_InputField _pw;
         [SerializeField] Button _tryLogin;
+        [SerializeField] Button _register;
 
-        private void Start()
+        private async void Start()
         {
+            var dependencyState = await FirebaseApp.CheckAndFixDependenciesAsync();
+
+            if (dependencyState != DependencyStatus.Available)
+            {
+                throw new Exception();
+            }
+
             _tryLogin.onClick.AddListener(() =>
             {
                 if (string.IsNullOrEmpty(_id.text))
@@ -22,7 +34,34 @@ namespace DiceGame.UI
                 if (string.IsNullOrEmpty(_pw.text))
                     return;
 
-                LoginInformation.TryLogin(_id.text, _pw.text);
+                FirebaseAuth auth = FirebaseAuth.DefaultInstance;
+                auth.SignInWithEmailAndPasswordAsync(_id.text, _pw.text)
+                    .ContinueWithOnMainThread(async task =>
+                    {
+                        if (task.IsCanceled)
+                        {
+                            Debug.LogError("Canceled login");
+                        }
+                        else if (task.IsFaulted)
+                        {
+                            Debug.LogError("Faulted login");
+                        }
+                        else
+                        {
+                            Debug.Log("ID PW is correct");
+                            bool result = await LoginInformation.RefreshInformationAsync(_id.text);
+
+                            if (result == false)
+                            {
+                                UIManager.instance.Get<UINicknameSettingWindow>().Show();
+                            }
+                        }
+                    });
+            });
+
+            _register.onClick.AddListener(() =>
+            {
+                UIManager.instance.Get<UIRegisterWindow>().Show();
             });
         }
     }

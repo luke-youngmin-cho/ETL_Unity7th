@@ -10,6 +10,7 @@ namespace DiceGame.Game
     public enum GameState
     {
         None,
+        WaitUntilInternetConnected,
         Login,
         WaitUntilLoggedIn,
         LoadResources,
@@ -53,6 +54,14 @@ namespace DiceGame.Game
             {
                 case GameState.None:
                     break;
+                case GameState.WaitUntilInternetConnected:
+                    {
+                        if (InternetConnection.IsGoogleWebsiteReachable())
+                        {
+                            _state++;
+                        }
+                    }
+                    break;
                 case GameState.Login:
                     {
                         SceneManager.LoadScene("Login");
@@ -61,7 +70,8 @@ namespace DiceGame.Game
                     break;
                 case GameState.WaitUntilLoggedIn:
                     {
-                        if (LoginInformation.loggedIn)
+                        if (LoginInformation.loggedIn &&
+                            LoginInformation.profile != null)
                         {
                             if (PhotonManager.instance)
                                 _state++;
