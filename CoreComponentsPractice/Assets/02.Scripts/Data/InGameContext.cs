@@ -6,8 +6,9 @@ using Firebase;
 using System;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-using Unity.VisualScripting;
 using Firebase.Extensions;
+using System.Text;
+using System.Linq;
 
 namespace DiceGame.Data
 {
@@ -31,6 +32,20 @@ namespace DiceGame.Data
                 _realtimeDB.GetReference($"users/{LoginInformation.userKey}/inventorySlots");
 
             DataSnapshot snapshot = await inventorySlotsRef.GetValueAsync();
+
+            if (snapshot.Exists == false)
+            {
+                int defaultSlotTotal = 30;
+                string slotDataJson = "{\r\n          \"itemID\": 0,\r\n          \"itemNum\": 0\r\n        },\r\n        ";
+                string head = " {\r\n      \"inventorySlots\": [\r\n        ";
+                string tail = "]\r\n    }\r\n  ";
+                StringBuilder stringBuilder = new StringBuilder(head.Length + tail.Length + slotDataJson.Length * defaultSlotTotal);
+                stringBuilder.Append(head);
+                stringBuilder.Insert(stringBuilder.Length, slotDataJson, defaultSlotTotal);
+                stringBuilder.Append(tail);
+                await FirebaseDatabase.DefaultInstance.RootReference.Child("users").Child(LoginInformation.userKey).SetRawJsonValueAsync(stringBuilder.ToString());
+                snapshot = await inventorySlotsRef.GetValueAsync();
+            }
 
             inventorySlotDataModels = new List<InventorySlotDataModel>();
 
