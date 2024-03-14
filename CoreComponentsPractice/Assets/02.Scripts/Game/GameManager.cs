@@ -15,7 +15,9 @@ namespace DiceGame.Game
         WaitUntilLoggedIn,
         LoadResources,
         WaitUntilResourcesLoaded,
-        InGame,
+        InLobby,
+        InGameReady,
+        InGamePlay,
     }
 
 
@@ -92,12 +94,16 @@ namespace DiceGame.Game
                     {
                         if (unitOfWork.isReady)
                         {
-                            SceneManager.LoadScene("DicePlay");
+                            SceneManager.LoadScene("Lobby");
                             _state++;
                         }
                     }
                     break;
-                case GameState.InGame:
+                case GameState.InLobby:
+                    break;
+                case GameState.InGameReady:
+                    break;
+                case GameState.InGamePlay:
                     break;
                 default:
                     break;

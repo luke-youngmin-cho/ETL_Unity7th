@@ -1462,8 +1462,9 @@ GameObject:
   - component: {fileID: 2069651074746539033}
   - component: {fileID: 1142680584909691295}
   - component: {fileID: 5197504440280913609}
+  - component: {fileID: 7278691759985595805}
   m_Layer: 5
-  m_Name: Canvas - RoomList
+  m_Name: Canvas - Lobby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1555,3 +1556,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7278691759985595805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8306601721878479136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dc8e263fc257c439e450e0a29540aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _roomListContent: {fileID: 1312528379475926251}
+  _roomListslotPrefab: {fileID: -6159484353347682397, guid: 7970070834b31594594e698116d47b16,
+    type: 3}

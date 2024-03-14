@@ -12,7 +12,16 @@ EditorBuildSettings:
     path: Assets/01.Scenes/Login.unity
     guid: 603fb9c86b4f8fe48a4f3cb5a4af0b71
   - enabled: 1
+    path: Assets/01.Scenes/Lobby.unity
+    guid: 49b06856faf74ce4a9cba79d0b0e8718
+  - enabled: 1
     path: Assets/01.Scenes/DicePlay.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/01.Scenes/GameReady.unity
+    guid: 93d8379e1e4787d47b999fb23578566d
+  - enabled: 1
+    path: Assets/01.Scenes/GamePlay.unity
+    guid: 15bcd2a524899854d8eddbe23f9df3a9
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

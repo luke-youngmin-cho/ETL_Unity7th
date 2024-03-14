@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 2959559392816013538}
   - component: {fileID: 8386649680538556563}
   - component: {fileID: 157826949011663186}
+  - component: {fileID: 26364967524597460}
   m_Layer: 5
   m_Name: Canvas - CreatingRoom
   m_TagString: Untagged
@@ -1093,7 +1094,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5371957239646491931}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -1149,6 +1150,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &26364967524597460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371957239646491931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 941b1d7b3fa8f014db37115d9bf8aafe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hideWhenPointerDownOutside: 0
 --- !u!1 &5969348748950472326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1915,9 +1929,9 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9064351537328832139}
   m_HandleRect: {fileID: 6108301085578127841}
   m_Direction: 0
-  m_Value: 0.03
+  m_Value: 0
   m_Size: 0.1
-  m_NumberOfSteps: 7
+  m_NumberOfSteps: 8
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 1764261690268811254}
   - component: {fileID: 7279205356696102785}
   - component: {fileID: 1512237124792646371}
+  - component: {fileID: -6159484353347682397}
   m_Layer: 5
   m_Name: RoomListSlot
   m_TagString: Untagged
@@ -396,3 +397,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-6159484353347682397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891823943550325650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a77cfdc51b1351e4a919b02006530ae7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomIndex: 0

@@ -3,11 +3,9 @@ using TMPro;
 using UnityEngine.UI;
 using DiceGame.Data;
 using Firebase.Auth;
-using DiceGame.Data.Firebase;
 using Firebase;
 using System;
 using Firebase.Extensions;
-
 namespace DiceGame.UI
 {
     public class LoginUI : MonoBehaviour
