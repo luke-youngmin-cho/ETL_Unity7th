@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using DiceGame.Game;
 
 namespace DiceGame.Network
 {
@@ -48,6 +49,7 @@ namespace DiceGame.Network
         {
             base.OnConnectedToMaster();
             onConnectedToMaster?.Invoke();
+            PhotonNetwork.AutomaticallySyncScene = true; // 얘 안해주면 PhotonNetwork.LoadLevel() 이 방장외 다른클라이언트의 씬을 동기화 하지 않음.
             Debug.Log("[PhotonManager] : Conntected to master");
         }
 
@@ -72,6 +74,17 @@ namespace DiceGame.Network
             PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable()
             {
                 { "isReady", false }
+            });
+
+            GameManager.instance.state = GameState.InGameReady;
+        }
+
+        public override void OnLeftRoom()
+        {
+            base.OnLeftRoom();
+
+            PhotonNetwork.LocalPlayer.SetCustomProperties(new ExitGames.Client.Photon.Hashtable()
+            {
             });
         }
     }

@@ -38,7 +38,26 @@ namespace DiceGame.UI
                 if (PhotonNetwork.IsMasterClient == false)
                     throw new System.Exception($"[UIgameReadyInRoom] : Tried to start game despite I'm not a master client.");
 
-                PhotonNetwork.LoadLevel("GamePlay");
+                // 모든 플레이어 준비됐는지 확인
+                foreach (Player player in PhotonNetwork.PlayerList)
+                {
+                    // 방장은 준비 확인 할 필요 없음
+                    if (player.IsMasterClient)
+                        continue;
+
+                    if (player.CustomProperties.TryGetValue("isReady", out bool isReady))
+                    {
+                        // 준비 안된 player 찾음
+                        if (isReady == false)
+                            return;
+                    }
+                    else
+                    {
+                        return; // 이 player 의 CustomProperty 가 아직 설정되지 못함..
+                    }
+                }
+
+                PhotonNetwork.LoadLevel("GamePlay"); // 현재 방의 모든 클라이언트의 씬을 이동
             });
         }
 
@@ -50,6 +69,7 @@ namespace DiceGame.UI
         IEnumerator C_Init()
         {
             yield return new WaitUntil(() => PhotonNetwork.NetworkClientState == ClientState.Joined);
+            yield return new WaitUntil(() => PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("isReady"));
 
             _start.gameObject.SetActive(PhotonNetwork.LocalPlayer.IsMasterClient == true);
             _ready.gameObject.SetActive(PhotonNetwork.LocalPlayer.IsMasterClient == false);
@@ -83,8 +103,14 @@ namespace DiceGame.UI
         public void OnPlayerEnteredRoom(Player newPlayer)
         {
             var slot = Instantiate(_playerStatusInGameReadyInRoomSlotPrefab, _playerStatusInGameReadyInRoomContent);
-            slot.Refresh((bool)newPlayer.CustomProperties["isReady"]);
             _playerStatusInGameReadyInRoomSlots.Add(newPlayer.UserId, slot);
+            StartCoroutine(C_RefreshSlot(newPlayer));
+        }
+
+        IEnumerator C_RefreshSlot(Player player)
+        {
+            yield return new WaitUntil(() => player.CustomProperties.ContainsKey("isReady"));
+            _playerStatusInGameReadyInRoomSlots[player.UserId].Refresh((bool)player.CustomProperties["isReady"]);
         }
 
         public void OnPlayerLeftRoom(Player otherPlayer)
