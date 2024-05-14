@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class UIGoogleStaticMap : MonoBehaviour
+public class UIGoogleStaticMap : MonoBehaviour, InputActions.IUIActions
 {
     public int zoomLevel
     {
@@ -37,14 +37,18 @@ public class UIGoogleStaticMap : MonoBehaviour
     private readonly string GOOGLE_MAP_API_KEY = "AIzaSyB3NA2eKGtGUYxPbxZWaHtijNfB8M6oWRo";
     private RectTransform _rawImageRectTransform;
     private RawImage _rawImage;
-    private int _zoomLevel = 10;
+    [SerializeField] private int _zoomLevel = 10;
     private Vector2 _imageSize;
     private IGPS _gps;
     public event Action<int> onZoomLevelChanged;
-
+    private InputActions _inputActions;
 
     private void Awake()
     {
+        _inputActions = new InputActions();
+        _inputActions.UI.SetCallbacks(this);
+        _inputActions.UI.Enable();
+
         _rawImage = GetComponentInChildren<RawImage>();
         _rawImageRectTransform = _rawImage.GetComponent<RectTransform>();
         _imageSize = new Vector2(_rawImageRectTransform.rect.width, _rawImageRectTransform.rect.height);
@@ -57,7 +61,7 @@ public class UIGoogleStaticMap : MonoBehaviour
         onZoomLevelChanged += value =>
         {
             zoomIn.interactable = value < 20;
-            zoomOut.interactable = value > 5;
+            zoomOut.interactable = value > 1;
             StartCoroutine(C_RequestMap());
         };
     }
@@ -65,6 +69,12 @@ public class UIGoogleStaticMap : MonoBehaviour
     private void Start()
     {
         StartCoroutine(C_RequestMap());
+    }
+
+    private void Update()
+    {
+        if (_gps.isDirty)
+            StartCoroutine(C_RequestMap());
     }
 
     IEnumerator C_RequestMap()
@@ -87,8 +97,49 @@ public class UIGoogleStaticMap : MonoBehaviour
         }
     }
 
-    public void OnTouch(InputAction.CallbackContext context)
+    public void OnNavigate(InputAction.CallbackContext context)
     {
-        Debug.Log("Touch");
     }
+
+    public void OnSubmit(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnCancel(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnPoint(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnClick(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Vector2 mousePosition = Mouse.current.position.ReadValue();
+        }
+    }
+
+    public void OnScrollWheel(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnMiddleClick(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnRightClick(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnTrackedDevicePosition(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnTrackedDeviceOrientation(InputAction.CallbackContext context)
+    {
+    }
+
+
 }

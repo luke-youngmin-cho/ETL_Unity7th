@@ -470,18 +470,28 @@ MonoBehaviour:
   m_MoveRepeatDelay: 0.5
   m_MoveRepeatRate: 0.1
   m_XRTrackingOrigin: {fileID: 0}
-  m_ActionsAsset: {fileID: -944628639613478452, guid: 423ad87ab9abb6645af3809ba799de37,
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 7f48b66ea5420114aab8f2c36bc580e5,
     type: 3}
-  m_PointAction: {fileID: 0}
-  m_MoveAction: {fileID: 0}
-  m_SubmitAction: {fileID: 0}
-  m_CancelAction: {fileID: 0}
-  m_LeftClickAction: {fileID: 0}
-  m_MiddleClickAction: {fileID: 0}
-  m_RightClickAction: {fileID: 0}
-  m_ScrollWheelAction: {fileID: 0}
-  m_TrackedDevicePositionAction: {fileID: 0}
-  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_PointAction: {fileID: -1654692200621890270, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: 7f48b66ea5420114aab8f2c36bc580e5,
+    type: 3}
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
@@ -1044,7 +1054,6 @@ GameObject:
   - component: {fileID: 1852323213}
   - component: {fileID: 1852323212}
   - component: {fileID: 1852323216}
-  - component: {fileID: 1852323217}
   m_Layer: 5
   m_Name: Canvas - GoogleStaticMap
   m_TagString: Untagged
@@ -1147,37 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f1c559036967484db1fefa6a074e01d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1852323217
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1852323211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 423ad87ab9abb6645af3809ba799de37,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 521911309}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: ScreenUI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  _zoomLevel: 10
 --- !u!1 &1887126888
 GameObject:
   m_ObjectHideFlags: 0

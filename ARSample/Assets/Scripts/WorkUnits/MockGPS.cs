@@ -41,7 +41,7 @@ public class MockGPS : MonoBehaviour, IGPS
     }
 
 
-    private float _latitude = 37.5138649f;
-    private float _longitude = 127.0295296f;
-    private bool _isDirty;
+    [SerializeField] private float _latitude = 37.5138649f;
+    [SerializeField] private float _longitude = 127.0295296f;
+    [SerializeField] private bool _isDirty;
 }
