@@ -5,7 +5,7 @@ public class MockGPS : MonoBehaviour, IGPS
     public float latitude
     {
         get => _latitude;
-        set
+        private set
         {
             _latitude = value;
             isDirty = true;
@@ -15,7 +15,7 @@ public class MockGPS : MonoBehaviour, IGPS
     public float longitude
     {
         get => _longitude;
-        set
+        private set
         {
             _longitude = value;
             isDirty = true;
@@ -34,7 +34,7 @@ public class MockGPS : MonoBehaviour, IGPS
 
             return false;
         }
-        set
+        private set
         {
             _isDirty = value;
         }

@@ -52,7 +52,13 @@ public class UIGoogleStaticMap : MonoBehaviour, InputActions.IUIActions
         _rawImage = GetComponentInChildren<RawImage>();
         _rawImageRectTransform = _rawImage.GetComponent<RectTransform>();
         _imageSize = new Vector2(_rawImageRectTransform.rect.width, _rawImageRectTransform.rect.height);
+
+#if UNITY_EDITOR
         _gps = new MockUnitOfWork().gps;
+#elif UNITY_ANDROID
+        _gps = new UnitOfWork().gps;
+#else
+#endif
 
         Button zoomIn = _rawImage.transform.Find("Button - ZoomIn").GetComponent<Button>();
         Button zoomOut = _rawImage.transform.Find("Button - ZoomOut").GetComponent<Button>();
@@ -115,7 +121,7 @@ public class UIGoogleStaticMap : MonoBehaviour, InputActions.IUIActions
 
     public void OnClick(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.ReadValueAsButton())
         {
             Vector2 mousePosition = Mouse.current.position.ReadValue();
         }
