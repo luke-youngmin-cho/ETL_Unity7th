@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.Android;
 
@@ -67,25 +68,45 @@ public class GPS : MonoBehaviour, IGPS
         }
 
         Input.location.Start();
-        yield return new WaitUntil(() => Input.location.status == LocationServiceStatus.Running);
+        Debug.Log("Wait for location initialized");
 
-        LocationInfo li = Input.location.lastData;
-        /*latitude = li.latitude;
-       longitude = li.longitude;
-       latitude_text.text = "위도 : " + latitude.ToString();
-       longitude_text.text = "경도 : " + longitude.ToString();
-       */
-        //위치 정보 수신 시작 체크
-
-        //위치 데이터 수신 시작 이후 resendTime 경과마다 위치 정보를 갱신하고 출력
-        while (true)
+        // Waits until the location service initializes
+        int maxWait = 20;
+        while (Input.location.status == LocationServiceStatus.Initializing && maxWait > 0)
         {
-            li = Input.location.lastData;
-            latitude = li.latitude;
-            longitude = li.longitude;
-
-            yield return new WaitForSeconds(_refreshPeriod);
+            yield return new WaitForSeconds(1);
+            maxWait--;
         }
+
+        // If the service didn't initialize in 20 seconds this cancels location service use.
+        if (maxWait < 1)
+        {
+            Debug.Log("Timed out");
+            yield break;
+        }
+
+        // If the connection failed this cancels location service use.
+        if (Input.location.status == LocationServiceStatus.Failed)
+        {
+            Debug.LogError("Unable to determine device location");
+            yield break;
+        }
+        else
+        {
+            LocationInfo locationInfo = Input.location.lastData;
+
+            while (true)
+            {
+                locationInfo = Input.location.lastData;
+                latitude = locationInfo.latitude;
+                longitude = locationInfo.longitude;
+
+                yield return new WaitForSeconds(_refreshPeriod);
+            }
+        }
+
+        // Stops the location service if there is no need to query location updates continuously.
+        Input.location.Stop();
     }
 
     void OpenAppSettings()
