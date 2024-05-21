@@ -8,8 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/FaceTracking.unity
+    guid: 19635e615ffea994faa9cd9de9963ed7
   m_configObjects:
     UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: 6c9465fafaa37ff49903a9c770a819a5,
+      type: 2}
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 149bc543fa2d9b447a3b9875d3a513fa,
       type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 063535b718af7e84fbc35ee8cd702139,
       type: 2}

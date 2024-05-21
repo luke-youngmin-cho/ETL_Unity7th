@@ -327,7 +327,11 @@ GameObject:
   - component: {fileID: 425697812}
   - component: {fileID: 425697814}
   - component: {fileID: 425697816}
-  - component: {fileID: 425697815}
+  - component: {fileID: 425697817}
+  - component: {fileID: 425697819}
+  - component: {fileID: 425697820}
+  - component: {fileID: 425697822}
+  - component: {fileID: 425697821}
   m_Layer: 0
   m_Name: AR Session Origin
   m_TagString: Untagged
@@ -379,19 +383,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PointCloudPrefab: {fileID: 5483116572262176137, guid: 19cfef3207c29b44fbc5d3e4c992e4e3,
     type: 3}
---- !u!114 &425697815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425697811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RaycastPrefab: {fileID: 0}
 --- !u!114 &425697816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -407,6 +398,82 @@ MonoBehaviour:
   m_PlanePrefab: {fileID: 5952411467248195732, guid: dd3212134f8393942a6a01b50948b423,
     type: 3}
   m_DetectionMode: 1
+--- !u!114 &425697817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425697811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: ebf56979fa4a5a749b86d8319650bf72,
+    type: 2}
+  m_MaxNumberOfMovingImages: 1
+  m_TrackedImagePrefab: {fileID: 0}
+--- !u!114 &425697819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425697811}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ea40ea3cee0404e92744f5abdd0ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trackedImageManager: {fileID: 425697817}
+  _prefabs:
+  - {fileID: 158838, guid: 598fe43e96a0f4e0ca8f186f42584a93, type: 3}
+  - {fileID: 5241911548385263146, guid: 69df11ed1a49283449bee8c13a7093f4, type: 3}
+  _cameraManager: {fileID: 1162561209}
+  _raycastManager: {fileID: 425697820}
+--- !u!114 &425697820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425697811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa17d122634046b4a8e23048891fafc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RaycastPrefab: {fileID: 0}
+--- !u!114 &425697821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425697811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c162c0b18cefb43b5e449740e46421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _arRaycastManager: {fileID: 425697820}
+  _arAnchorManager: {fileID: 425697822}
+  _camera: {fileID: 1162561206}
+--- !u!114 &425697822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425697811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AnchorPrefab: {fileID: 1606605229436065942, guid: cfd94516c2703dc42bc6c8ad2772a581,
+    type: 3}
 --- !u!1 &521911305
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,7 +991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1446885210
 Transform:
   m_ObjectHideFlags: 0
@@ -952,7 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757e2c54095f82d4c8f24df7cef2adc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _raycaster: {fileID: 425697815}
+  _raycaster: {fileID: 0}
   _ball: {fileID: 5367974075926660970, guid: 6b7b1d781831e7e4c88bc624277fb9ad, type: 3}
   _arCamera: {fileID: 1162561212}
 --- !u!120 &1446885212
@@ -1208,7 +1275,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1852323212
 MonoBehaviour:
   m_ObjectHideFlags: 0
