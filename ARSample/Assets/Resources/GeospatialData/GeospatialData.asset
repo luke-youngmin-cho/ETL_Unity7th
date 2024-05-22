@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5794bbc2f0b3ebc40ab1358dc555deaa, type: 3}
+  m_Name: GeospatialData
+  m_EditorClassIdentifier: 
+  poses:
+  - latitude: 37.5138649
+    longitude: 127.0295296
+    altitude: 30.48991583333657
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51380605387976
+    longitude: 127.0298182506064
+    altitude: 25.82870630998612
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51398529039032
+    longitude: 127.0297261451358
+    altitude: 26.01798454863203
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51385745163397
+    longitude: 127.0297082054001
+    altitude: 25.94118030699272
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51416134924924
+    longitude: 127.0295822314819
+    altitude: 26.14713044848827
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.5140527542322
+    longitude: 127.029483815175
+    altitude: 26.08324856047081
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51418550189354
+    longitude: 127.0297501741358
+    altitude: 26.1988990642731
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51420962335985
+    longitude: 127.0293575433473
+    altitude: 26.42324605520735
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51436209603204
+    longitude: 127.0296689353623
+    altitude: 26.54676924076835
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51379800406728
+    longitude: 127.0296688150181
+    altitude: 25.82581275338024
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.5139394362803
+    longitude: 127.0298605327035
+    altitude: 26.07917113396006
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51413536067557
+    longitude: 127.0296517193099
+    altitude: 26.05651376909474
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}
+  - latitude: 37.51431715472685
+    longitude: 127.0295322437993
+    altitude: 26.47356951639798
+    eunRotation: {x: 0, y: 0, z: 0, w: 0}

@@ -5,6 +5,7 @@ using UnityEngine.Android;
 
 public class GPS : MonoBehaviour, IGPS
 {
+    public bool isValid { get; private set; }
 
     public float latitude
     {
@@ -22,6 +23,16 @@ public class GPS : MonoBehaviour, IGPS
         set
         {
             _longitude = value;
+            isDirty = true;
+        }
+    }
+
+    public float altitude
+    {
+        get => _altitude;
+        set
+        {
+            _altitude = value;
             isDirty = true;
         }
     }
@@ -45,6 +56,7 @@ public class GPS : MonoBehaviour, IGPS
     }
     [SerializeField] private float _latitude;
     [SerializeField] private float _longitude;
+    [SerializeField] private float _altitude;
     [SerializeField] private bool _isDirty;
     [SerializeField] private float _refreshPeriod = 1.0f;
 
@@ -93,6 +105,7 @@ public class GPS : MonoBehaviour, IGPS
         }
         else
         {
+            isValid = true;
             LocationInfo locationInfo = Input.location.lastData;
 
             while (true)
@@ -100,7 +113,7 @@ public class GPS : MonoBehaviour, IGPS
                 locationInfo = Input.location.lastData;
                 latitude = locationInfo.latitude;
                 longitude = locationInfo.longitude;
-
+                altitude = locationInfo.altitude;
                 yield return new WaitForSeconds(_refreshPeriod);
             }
         }

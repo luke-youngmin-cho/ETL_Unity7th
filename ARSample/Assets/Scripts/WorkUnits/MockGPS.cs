@@ -2,6 +2,8 @@
 
 public class MockGPS : MonoBehaviour, IGPS
 {
+    public bool isValid => true;
+
     public float latitude
     {
         get => _latitude;
@@ -21,6 +23,7 @@ public class MockGPS : MonoBehaviour, IGPS
             isDirty = true;
         }
     }
+    public float altitude => 0f;
 
     public bool isDirty 
     {
