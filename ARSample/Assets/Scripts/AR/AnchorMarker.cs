@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.ARFoundation;
-using static GeospatialData;
 
 [RequireComponent(typeof(LineRenderer))]
 public class AnchorMarker : MonoBehaviour, InputActions.IUIActions
@@ -73,7 +72,7 @@ public class AnchorMarker : MonoBehaviour, InputActions.IUIActions
                     if (_hits[0].trackable.TryGetComponent(out ARPlane plane))
                     {
                         _arAnchorManager.AttachAnchor(plane,
-                                                                        new Pose(new Vector3((float)_dataPoses[index].latitude, (float)_dataPoses[index].longitude, _gps.altitude), _dataPoses[index].eunRotation));
+                                                                        new UnityEngine.Pose(new Vector3((float)_dataPoses[index].latitude, (float)_dataPoses[index].longitude, _gps.altitude), _dataPoses[index].eunRotation));
                         Debug.Log($"[AnchroMarker] : Attached anchor at {_dataPoses[index].latitude}, {_dataPoses[index].longitude}, {_gps.altitude}");
                         _dataPoses.RemoveAt(index);
                     }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ARCoreExtensionsConfig
   m_EditorClassIdentifier: 
   CloudAnchorMode: 0
-  SemanticMode: 0
+  SemanticMode: 1
   GeospatialMode: 2
   StreetscapeGeometryMode: 0
