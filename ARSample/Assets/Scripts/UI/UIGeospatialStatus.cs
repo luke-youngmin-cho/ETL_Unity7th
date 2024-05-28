@@ -53,6 +53,8 @@ public class UIGeospatialStatus : MonoBehaviour
 
     private void Update()
     {
+        if (_arEarthManager.EarthState != EarthState.Enabled)
+            Debug.Log($"Earth not enabled.{_arEarthManager.EarthState}");
         var pose = _arEarthManager.EarthState == EarthState.Enabled && _arEarthManager.EarthTrackingState == TrackingState.Tracking
                                 ? _arEarthManager.CameraGeospatialPose : new GeospatialPose();
         _latitude.text = pose.Latitude.ToString();

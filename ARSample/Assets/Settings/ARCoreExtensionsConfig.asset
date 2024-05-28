@@ -15,4 +15,4 @@ MonoBehaviour:
   CloudAnchorMode: 0
   SemanticMode: 1
   GeospatialMode: 2
-  StreetscapeGeometryMode: 0
+  StreetscapeGeometryMode: 1
